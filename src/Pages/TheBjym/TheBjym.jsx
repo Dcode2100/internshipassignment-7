@@ -5,6 +5,41 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './TheBjym.scss'
 
+function Dots(props){
+  const {currentSlide, slideCount} = props;
+  const dots = [];
+  for(let i = 0; i < slideCount; i++){
+    dots.push(
+      <li className={i === currentSlide ? "slick-active" : ""}>
+        <button>{i + 1}</button>
+      </li>
+    );
+  }
+  return <ul className="slick-dots">{dots}</ul>;
+
+}
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className="next-arrow"
+      style={{ ...style}}
+      onClick={onClick}
+    > --        NEXT       --
+      </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div className="prev-arrow" style={{ ...style }} onClick={onClick}>
+      {" "}
+      -- PREV --
+    </div>
+  );
+}
 var settings = {
   dots: true,
   infinite: true,
@@ -13,7 +48,9 @@ var settings = {
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 3000,
-  cssEase: "ease-in-out",
+  dots: <Dots/>,
+  nextArrow: <SampleNextArrow />,
+  prevArrow: <SamplePrevArrow />,
 };
 
 const TheBjym = () => {
@@ -21,8 +58,8 @@ const TheBjym = () => {
   return (
     <div>
       <div className="container">
-        <Header />
         <div className="carousel-container">
+          <Header />
           <Slider {...settings}>
             <div className="carousel">
               <div className="Name">
@@ -46,8 +83,8 @@ const TheBjym = () => {
             </div>
             <div className="carousel">
               <div className="Name">
-              <h2>JAGAT PRAKASH</h2>
-              <h1>NADDA</h1>
+                <h2>JAGAT PRAKASH</h2>
+                <h1>NADDA</h1>
               </div>
               <img
                 className="carousel-img"
