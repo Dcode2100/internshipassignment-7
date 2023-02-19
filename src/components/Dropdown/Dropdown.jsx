@@ -1,9 +1,15 @@
-import React from 'react'
+import "./style.scss";
 
-const Dropdown = () => {
+const Dropdown = ({ submenus, dropdown }) => {
   return (
-    <div>Dropdown</div>
-  )
-}
+    <ul className={`dropdown ${dropdown ? "show" : ""}`}>
+      {submenus.map((submenu, index) => (
+        <li key={index} className="menu-items">
+          <a href={submenu.url}>{submenu.title}</a>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
-export default Dropdown
+export default Dropdown;
